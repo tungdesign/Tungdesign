@@ -1,0 +1,58 @@
+{%  extends "masterpage.html" %}
+{% set active_page = "products" %}
+{%  block content %}
+
+    <head>
+        <Title>Product Details</Title>
+        <style>
+            .container{
+                height:800px;
+            }
+
+            .comment_container{
+                height:40px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+    {%  for mess in data %}
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <h1>{{ mess[1] }}</h1>
+                <p class="lead">Short Description</p>
+            </div>
+        </div>
+        </header>
+        <div class="row">
+            <div class="col-xs-12 col-md-6">
+                <figure class="text-center">
+                    <img src="/static/uploads/{{ mess[9] }}" alt="The Amazing Product" class="img-thumbnail" />
+                </figure>
+            </div>
+            <div class="col-xs-12 col-md-4 col-md-offset-1">
+                <p>
+                    {{ mess[7] }}
+                </p>
+                <p>
+                    Put attributes and shiiiET here
+                    <br>
+                    Available in sizes between {{ mess[3] }}  and {{ mess[4] }}</p>
+            </div>
+            <h2>{{ mess[2] }} KR</h2>
+            <p><a class="btn btn-success" href="#" role="button">Add to cart</a></p>
+        </div>
+    {% endfor %}
+    <hr />
+    {%  for comment in comments %}
+        <div class="comment_container">
+            {{ comment[1] }} Wrote:
+            <br>
+            {{ comment[2] }}
+            <br>
+        </div>
+    {% endfor %}
+    </body>
+
+{%  endblock %}

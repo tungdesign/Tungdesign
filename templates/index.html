@@ -1,0 +1,47 @@
+{%  extends "masterpage.html" %}
+{% set active_page = "index" %}
+{%  block content %}
+
+    <head>
+    </head>
+
+    <body>
+    <div class="row">
+    </div>
+    <div id ="mycarousel" class="carousel slide" data-ride="carousel">
+        <ol class = "carousel-indicators">
+            <li data-target ="#mycarousel" data-slide-to="0" class="active"></li>
+            <li data-target ="#mycarousel" data-slide-to="1"></li>
+            <li data-target ="#mycarousel" data-slide-to="2"></li>
+        </ol>
+        <div class= "carousel-inner">
+            <div class = "item active"> <img src="../static/img/Triumphthumb.jpg" class="center-block" alt = "Triumph"> </div>
+            <div class = "item"> <img src="../static/img/Revoltthumb.jpg" class="center-block" alt = "Revolt"> </div>
+            <div class = "item"> <img src="../static/img/Conquestthumb.jpg" class="center-block" alt = "Conquest"> </div>
+        </div> <a class="left carousel-control" href="#mycarousel" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </a> <a class="right carousel-control" href="#mycarousel" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span> </a>
+    </div>
+    <div class="row">
+        <p></p></div>
+    <div class='row'>
+        <script> var a=0;</script>
+        {%  for mess in data %}
+            <script>
+                if (a%4==0 && a<7 ) {
+                    document.write("</div><div class='row'>")
+                }
+                a++;</script>
+            <div class="col-md-3">
+                <a href="/products/{{ mess[1] }}"> <img src="/static/uploads/{{ mess[9] }}" width="280px" height="187px" ></a>
+                <h2>{{ mess[1] }}</h2>
+                <p>{{ mess[7] }}</p>
+                <p><a class="btn btn-default" href="/products/{{ mess[1] }}" role="button">View details &raquo;</a>
+                    <a class="btn btn-success" href="#" role="button">Add to cart</a></p>
+            </div>
+        {% endfor %}
+    </div>
+    </body>
+
+{%  endblock %}
